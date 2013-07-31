@@ -1,0 +1,46 @@
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-05 23:29:29
+project --topLevelPackage com.rte.business --projectName RTE-Business --java 6 --packaging JAR
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-05 23:29:43
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-05 23:30:09
+mongo setup --cloudFoundry false 
+entity mongo --class ~.MixEnergy --testAutomatically true 
+field number --fieldName autre --type double
+field number --fieldName charbon --type double
+field number --fieldName consommation --type double
+field number --fieldName ech_comm_allemagne --type double
+field number --fieldName ech_comm_angleterre --type double
+field number --fieldName ech_comm_belgique --type double
+field number --fieldName ech_comm_espagne  --type double
+field number --fieldName ech_comm_italie  --type double
+field number --fieldName ech_comm_suisse  --type double
+field number --fieldName ech_physiques  --type double
+field number --fieldName eolien  --type double
+field number --fieldName fioul  --type double
+field number --fieldName gaz  --type double
+field number --fieldName hydrolique  --type double
+field number --fieldName nucleaire  --type double
+field number --fieldName pompage  --type double
+field number --fieldName previsionj1  --type double
+field number --fieldName previsionj  --type double
+field number --fieldName solaire  --type double
+field number --fieldName taux_co2  --type double
+repository mongo --interface ~.repository.MixEnergyRepository  --entity ~.business.MixEnergy
+repository mongo --interface ~.repository.MixEnergyRepository  --entity ~.business.MixEnergy
+service  --interface ~.service.MixEnergyService  --entity ~.business.MixEnergy
+service  --interface ~.service.RteGrabberService
+logging setup --package com.rte --level DEBUG
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-09 20:40:54
+web mvc setup
+web mvc json all
+web mvc json all
+// [failed] web mvc json add --jsonObject com.rte..json.MixEnergyJson --class com.rte.business.MixEnergy 
+// [failed] web mvc json add --jsonObject com.rte..json.MixEnergyJson --class *
+// [failed] web mvc json add --class com.rte..json.MixEnergyJson --jsonObject com.rte.business.MixEnergy 
+web mvc json add --class com.rte.json.MixEnergyJson --jsonObject com.rte.business.MixEnergy 
+web mvc json add --jsonObject com.rte.json.MixEnergyJson --class com.rte.business.MixEnergy 
+web mvc json add --class com.rte.json.MixEnergyJson --jsonObject com.rte.business.MixEnergy 
+web mvc json add --jsonObject com.rte.json.MixEnergyJson --class com.rte.business.MixEnergy 
+json all
+web mvc json all --package ~.controller
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-13 15:11:16
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-13 15:55:50
