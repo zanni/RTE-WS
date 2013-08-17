@@ -177,15 +177,17 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 	private static ApplicationContext context;
 
 	public static void main(String[] args) {
-		context = new ClassPathXmlApplicationContext(
-				"META-INF/spring/applicationContext.xml");
+		context = 
+		new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/applicationContext.xml",
+				"META-INF/spring/applicationContext-mongo.xml"});
 
 		RteGrabberService grabber = context.getBean(RteGrabberService.class);
 		try {
 			 Calendar start = new GregorianCalendar();
-			 start.set(2011, 00, 0);
+			 start.set(2011, 0, 0);
 			 
 			 Calendar end = new GregorianCalendar();
+//			 end.set(2013, 0, 0);
 			 end.setTime(new Date());
 		    while (start.getTime().before(end.getTime()))
 		    {

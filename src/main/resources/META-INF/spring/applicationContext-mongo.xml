@@ -10,21 +10,9 @@
 
 	<mongo:repositories base-package="com.rte.business" />
 
-	<!-- To translate any MongoExceptions thrown in @Repository annotated classes -->
-	<bean id="DoubleToDateConverter" class="com.rte.converter.DoubleToDateConverter"/>
-	<bean id="DateToDoubleConverter" class="com.rte.converter.DateToDoubleConverter"/>
-	<context:annotation-config />
-	<mongo:mapping-converter>
-		<mongo:custom-converters>
-			<mongo:converter ref="DoubleToDateConverter" />
-			<mongo:converter ref="DateToDoubleConverter" />
-		</mongo:custom-converters>
-	</mongo:mapping-converter>
-
 	<bean class="org.springframework.data.mongodb.core.MongoTemplate"
 		id="mongoTemplate">
 		<constructor-arg ref="mongoDbFactory" />
-		<constructor-arg name="mongoConverter" ref="mappingConverter"/>
 	</bean>
 
 </beans>

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
@@ -61,6 +63,7 @@ public class MixEnergy {
 
 	private Double taux_co2;
 	
+	@DateTimeFormat(iso=ISO.DATE_TIME)
 	@Indexed
 	private Date logDate;
 

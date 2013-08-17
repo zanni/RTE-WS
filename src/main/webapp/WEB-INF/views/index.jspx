@@ -1,41 +1,16 @@
 <div xmlns:spring="http://www.springframework.org/tags"
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
-	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	xmlns:jsp="http://java.sun.com/JSP/Page" id="index_main" >
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:url value="/resources/scripts/website/index/main.js" var="main" />
-	<script src="${main}" type="text/javascript">
-	<!-- required for FF3 and Opera -->
-		
-	</script>
+	<script src="${main}" type="text/javascript"><!-- required for FF3 and Opera --></script>
 
-	<div id="header">
-		<div id="legend">
-			<div>
-				<ul>
-				</ul>
-			</div>
-			<p class="more"></p>
-				<p class="less"></p>
-		</div>
-		<h1 id="title"></h1>
-
-	</div>
+		<div id="decorator"><jsp:text/></div>	
+		<div id="vis"><jsp:text/></div>
 
 
 
-	<div id="selectors">
-		<select id="displays" class="input-medium"><option></option></select>
-		<select id="themes" class="input-medium"><option></option></select> <select
-			id="years" multiple="" class="input-small"><option></option></select>
-		<select id="months" multiple="" class="input-small"><option></option></select>
-		<select id="weeks" class="input-medium"><option></option></select> <select
-			id="days" class="input-medium"><option></option></select> <select
-			id="color" class="input-small"><option></option></select> <select
-			id="color_inversed" class="input-small"><option></option></select>
 
 
-
-	</div>
-	<div id="vis"></div>
 </div>

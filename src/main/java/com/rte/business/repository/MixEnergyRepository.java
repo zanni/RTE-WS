@@ -16,7 +16,7 @@ public interface MixEnergyRepository {
     
     @Query 
     public MixEnergy findByLogDate(Date logDate);
-    
+    		
     @Query 
     public List<MixEnergy> findByLogDateBetween(Date startDate, Date endDate);
     

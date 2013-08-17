@@ -62,7 +62,7 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 		StringBuilder map = new StringBuilder();
 		map.append("function(){var date = new Date();date.setTime(this.logDate);var temp = new Date(");
 		map.append(dateIndex);
-		map.append(");emit(temp.getTime(), { logDate:temp.getTime(),");
+		map.append(");emit(temp, { logDate:temp,");
 		map.append(fields_str);
 		map.append("});};");
 		return map.toString();
@@ -102,8 +102,6 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 		for(String field : fields){
 			if(first) first = false;
 			else {
-//				fields_init.append(",");
-//				fields_agg.append(",");
 				fields_return.append(",");
 			}
 			fields_init.append("var ");
@@ -141,6 +139,7 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 
 	private List<MixEnergy> genericAggregat(Date startDate, Date endDate,
 			String map, String reduce) {
+		
 		Query query = Query.query(Criteria.where("logDate").gte(startDate)
 				.andOperator(Criteria.where("logDate").lte(endDate)));
 

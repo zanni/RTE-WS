@@ -14,12 +14,11 @@
   <spring:url value="/resources/scripts/d3/d3.min.js" var="d3" />
   <spring:url value="/resources/scripts/calendar/calendar.min.js" var="calendar" />
   <spring:url value="/resources/scripts/rte/rte.ws.js" var="rte_ws" />
-  <spring:url value="/resources/styles/calendar.css" var="calendar_css" />
+  <spring:url value="/resources/scripts/rte/rte.calendar.js" var="rte_calendar" />
   <spring:url value="/resources/scripts/colorbrewer/colorbrewer.js" var="colorbrewer" />
   
   <link rel="stylesheet" type="text/css" href="${tundra_url}" />
   <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
-  <link rel="stylesheet" type="text/css" media="screen" href="${calendar_css}" />
   <link rel="SHORTCUT ICON" href="${favicon}" />
 
   <!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
@@ -37,6 +36,7 @@
   <script src="${d3}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${calendar}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${rte_ws}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+  <script src="${rte_calendar}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${colorbrewer}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
 
