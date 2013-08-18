@@ -42,7 +42,7 @@ var RteWS = function(spec) {
 	
 	me.json = function(agg, fields, success){
 		var getRTEURl = function (dateDebut, dateFin){
-			var url =  "mixenergys/"+agg+"/"+fields+"/between/jsonp/";
+			var url =  "mixenergys/"+agg+"/"+fields+"/between/";
 			if(dateDebut != null){
 				url += formatTimeStampUrl(dateDebut)
 			}
