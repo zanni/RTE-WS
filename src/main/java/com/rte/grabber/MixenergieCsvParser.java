@@ -184,11 +184,11 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 		RteGrabberService grabber = context.getBean(RteGrabberService.class);
 		try {
 			 Calendar start = new GregorianCalendar();
-			 start.set(2011, 0, 0);
+			 start.set(2010, 0, 0	);
 			 
 			 Calendar end = new GregorianCalendar();
-//			 end.set(2013, 0, 0);
-			 end.setTime(new Date());
+			 end.set(2011, 0, 0);
+//			 end.setTime(new Date());
 		    while (start.getTime().before(end.getTime()))
 		    {
 		        grabber.retreiveAllMixenergieOfDate(start.getTime());

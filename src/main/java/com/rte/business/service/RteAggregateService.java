@@ -12,5 +12,4 @@ public interface RteAggregateService {
 	public List<MixEnergy> aggregateDay(Date startDate,Date endDate, List<String> field);
 	public List<MixEnergy> aggregateMonth(Date startDate,Date endDate, List<String> field);
 	public List<MixEnergy> aggregateYear(Date startDate,Date endDate, List<String> field);
-
 }

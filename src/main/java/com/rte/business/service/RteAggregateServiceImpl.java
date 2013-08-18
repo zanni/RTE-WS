@@ -20,27 +20,31 @@ import com.rte.utils.TimedAggregateEnum;
 
 @Service
 public class RteAggregateServiceImpl implements RteAggregateService {
-	
+
 	@Resource
 	private MongoTemplate template;
-	
+
 	@Resource
 	private MixEnergyService mixEnergyRawService;
-	
+
 	private class MixEnergyValueObject {
 		private String id;
 		private MixEnergy value;
+
 		@SuppressWarnings("unused")
 		public String getId() {
 			return id;
 		}
+
 		public MixEnergy getValue() {
 			return value;
 		}
+
 		@SuppressWarnings("unused")
 		public void setValue(MixEnergy value) {
 			this.value = value;
 		}
+
 		@Override
 		public String toString() {
 			return "ValueObject [id=" + id + ", value=" + value + "]";
@@ -67,15 +71,13 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 		map.append("});};");
 		return map.toString();
 	}
-	
+
 	private String mapYear(List<String> field) {
-		return this.genericMap(
-				"date.getFullYear()", field);
+		return this.genericMap("date.getFullYear()", field);
 	}
-	
+
 	private String mapMonth(List<String> field) {
-		return this.genericMap(
-				"date.getFullYear(), date.getMonth()", field);
+		return this.genericMap("date.getFullYear(), date.getMonth()", field);
 	}
 
 	private String mapDay(List<String> field) {
@@ -90,6 +92,13 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 						field);
 	}
 
+	private String mapMinutes(List<String> field, int modulo) {
+		return this
+				.genericMap(
+						"date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()"
+								, field);
+	}
+
 	private String reduce(List<String> fields) {
 		// field0 = 0, ..., fieldN = 0
 		boolean first = true;
@@ -99,8 +108,9 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 		// field0: X, ..., fieldN: X
 		// with X : IF SUM fieldN IF MEAN fieldN/value.length
 		StringBuilder fields_return = new StringBuilder();
-		for(String field : fields){
-			if(first) first = false;
+		for (String field : fields) {
+			if (first)
+				first = false;
 			else {
 				fields_return.append(",");
 			}
@@ -113,16 +123,16 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 			fields_agg.append(";");
 			fields_return.append(field);
 			fields_return.append(":");
-			
-			RteFieldAggregateEnum fromAbbr = RteFieldAggregateEnum.fromAbbr(field);
-			if(fromAbbr.getAggregate().equals(ArrayAggregationEnum.MEAN)){
+
+			RteFieldAggregateEnum fromAbbr = RteFieldAggregateEnum
+					.fromAbbr(field);
+			if (fromAbbr.getAggregate().equals(ArrayAggregationEnum.MEAN)) {
 				fields_return.append("Math.round((");
 				fields_return.append(field);
 				fields_return.append("/");
 				fields_return.append("value.length)*100");
 				fields_return.append(")/100");
-			}
-			else{
+			} else {
 				fields_return.append(field);
 			}
 		}
@@ -139,7 +149,7 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 
 	private List<MixEnergy> genericAggregat(Date startDate, Date endDate,
 			String map, String reduce) {
-		
+
 		Query query = Query.query(Criteria.where("logDate").gte(startDate)
 				.andOperator(Criteria.where("logDate").lte(endDate)));
 
@@ -163,6 +173,8 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 			return this.aggregateDay(start, end, field);
 		case HOUR:
 			return this.aggregateHour(start, end, field);
+		case QUARTER:
+			return this.aggregateQuarter(start, end, field);
 		case MONTH:
 			return this.aggregateMonth(start, end, field);
 		case WEEK:
@@ -171,15 +183,15 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 			return this.aggregateYear(start, end, field);
 		default:
 			break;
-
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<MixEnergy> aggregateQuarter(Date startDate, Date endDate,
 			List<String> field) {
-		return null;
+		return this.genericAggregat(startDate, endDate, this.mapMinutes(field, 15),
+				this.reduce(field));
 	}
 
 	@Override
@@ -195,18 +207,19 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 		return this.genericAggregat(startDate, endDate, this.mapDay(field),
 				this.reduce(field));
 	}
-	
+
 	@Override
 	public List<MixEnergy> aggregateMonth(Date startDate, Date endDate,
 			List<String> field) {
 		return this.genericAggregat(startDate, endDate, this.mapMonth(field),
 				this.reduce(field));
 	}
-	
+
 	@Override
 	public List<MixEnergy> aggregateYear(Date startDate, Date endDate,
 			List<String> field) {
 		return this.genericAggregat(startDate, endDate, this.mapYear(field),
 				this.reduce(field));
 	}
+
 }
