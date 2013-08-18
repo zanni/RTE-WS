@@ -1,81 +1,108 @@
 /* ************************** */
-		/* 
-			fill weeks select with week data
-		*/
-		function createDisplaySelector(data, selected){
-			var displays = d3.select("#displays");
+/* 
+	fill weeks select with week data
+ */
+function createDisplaySelector(data, selected) {
+	var displays = d3.select("#displays");
 
-			var select = displays.selectAll("option")
-				.data(data);
+	var select = displays.selectAll("option").data(data);
 
-			select.enter().append("option")
-				.text(function(d){
-					return d;
-				})
-				.attr("id", function(d){ return "displays_"+d})
-				.attr("value", function(d){ return d});
-			select.exit().remove();
-			
-			$("#displays").css("display", "inline");
-			
-			displays.select("#displays_"+selected).attr("selected", true);	
-		}
+	select.enter().append("option").text(function(d) {
+		return d;
+	}).attr("id", function(d) {
+		return "displays_" + d
+	}).attr("value", function(d) {
+		return d
+	});
+	select.exit().remove();
 
+	$("#displays").css("display", "inline");
 
-		$.ready = function(){
-			
-			var rte_ws = new RteWS({
-				url : "192.168.1.101:8080"
-			});
+	displays.select("#displays_" + selected).attr("selected", true);
+}
+/* ************************** */
+/*
+ * fill weeks select with week data
+ */
+function createYearSelector(data, selected) {
+	var years = d3.select("#years");
 
-			var possible_displays = new RteCalendar({
-				rte_ws : rte_ws
-			});
+	var select = years.selectAll("option").data(data);
 
+	select.enter().append("option").text(function(d) {
+		return d;
+	}).attr("id", function(d) {
+		return "years_" + d
+	}).attr("value", function(d) {
+		return d
+	});
+	select.exit().remove();
 
+	$("#years").css("display", "inline");
 
-			var selected_display = "taux_co2";
-			var displays = ["taux_co2", "consommation", "taux_co2_consommation", "nucleaire", "nrj_ren", "fossile", "all"];
-		
+	years.select("#years_" + selected).attr("selected", true);
+}
 
-			createDisplaySelector(displays, selected_display);
+$.ready = function() {
 
-			var display = possible_displays[selected_display];
-			var agg = "day";
+	var rte_ws = new RteWS({
+		url : "192.168.1.101:8080"
+	});
 
-			/* ************************** */
-			/* 
-				CALENDAR INITIALIZATION 
-			*/
-			var calendar = new Calendar( {
-				name: "Co2 produit par kWh consommé (g)"
-				, renderer : new Calendar.renderer.drillthrough()
-				// , buckets : display.buckets
-				, colorScheme : display.colorScheme
-				// , colorSchemeInverse : display.colorSchemeInverse
-				, retreiveDataClosure : display.rte_datagrab_closure
-				, retreiveDataCallback : display.rte_datagrab_closure(agg)
-				, retreiveValueCallback : display.rte_closure
-				, width : $("#container").width()
-				, height: 800		
-			});
+	var possible_displays = new RteCalendar({
+		rte_ws : rte_ws
+	});
 
-			calendar.createTiles(2013);
+	var selected_display = "taux_co2";
+	var displays = [ "taux_co2", "consommation", "taux_co2_consommation",
+			"nucleaire", "nrj_ren", "fossile", "all" ];
 
-			$("#displays").change(function(e){
-				var selected_display = $("#displays").attr("value");
+	createDisplaySelector(displays, selected_display);
 
-				var display = possible_displays[selected_display];
-				calendar.name = display.name;
-				calendar.colorScheme = display.colorScheme;
-				calendar.colorSchemeInverse = display.colorSchemeInverse;
-				calendar.retreiveValueCallback = display.rte_closure;
-				calendar.retreiveDataClosure = display.rte_datagrab_closure;
-				calendar.retreiveDataCallback = display.rte_datagrab_closure(agg);
-				
+	var display = possible_displays[selected_display];
+	var agg = "day";
+	var selected_year = 2011;
+	var years = [ 2010, 2011, 2012, 2013 ];
+	createYearSelector(years, selected_year);
 
-				calendar.createTiles(2013);
-			});
+	/* ************************** */
+	/*
+	 * CALENDAR INITIALIZATION
+	 */
+	var calendar = new Calendar({
+		name : display.name,
+		renderer : new Calendar.renderer.drillthrough(),
+		colorScheme : display.colorScheme,
+		retreiveDataClosure : display.rte_datagrab_closure,
+		retreiveDataCallback : display.rte_datagrab_closure(agg),
+		retreiveValueCallback : display.rte_closure,
+		width : $("#container").width(),
+		height : 600
+	});
 
-		
-		}
+	calendar.createTiles(selected_year);
+
+	$("#displays").change(function(e) {
+		var selected_display = $("#displays").attr("value");
+		var years = $.map($('#years option:selected'), function(e) {
+			return parseInt($(e).val())
+		});
+
+		var display = possible_displays[selected_display];
+		calendar.name = display.name;
+		calendar.colorScheme = display.colorScheme;
+		calendar.colorSchemeInverse = display.colorSchemeInverse;
+		calendar.retreiveValueCallback = display.rte_closure;
+		calendar.retreiveDataClosure = display.rte_datagrab_closure;
+		calendar.retreiveDataCallback = display.rte_datagrab_closure(agg);
+
+		calendar.createTiles(years);
+	});
+	$("#years").change(function(e) {
+		var years = $.map($('#years option:selected'), function(e) {
+			return parseInt($(e).val())
+		});
+		calendar.createTiles(years);
+	});
+
+}

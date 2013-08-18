@@ -13,11 +13,13 @@
   <spring:url value="/resources/scripts/jquery/jquery-1.8.3.min.js" var="jquery" />
   <spring:url value="/resources/scripts/d3/d3.min.js" var="d3" />
   <spring:url value="/resources/scripts/calendar/calendar.min.js" var="calendar" />
+  <spring:url value="/resources/styles/calendar.css" var="calendar_css" />
   <spring:url value="/resources/scripts/rte/rte.ws.js" var="rte_ws" />
   <spring:url value="/resources/scripts/rte/rte.calendar.js" var="rte_calendar" />
   <spring:url value="/resources/scripts/colorbrewer/colorbrewer.js" var="colorbrewer" />
   
   <link rel="stylesheet" type="text/css" href="${tundra_url}" />
+  <link rel="stylesheet" type="text/css" href="${calendar_css}" />
   <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
   <link rel="SHORTCUT ICON" href="${favicon}" />
 

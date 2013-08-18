@@ -5,9 +5,17 @@
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:url value="/resources/scripts/website/index/main.js" var="main" />
 	<script src="${main}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-
-		<div id="decorator"><jsp:text/></div>	
+	<div id="container">
+		<div id="selectors" >
+			<select id="displays" class="input-medium" style="display: none"><jsp:text/></select>
+			<select id="years" multiple="true" class="input-small" style="display: none"><jsp:text/></select>
+		</div>
+		
+		
+		<div id="decorator_top"><jsp:text/></div>
 		<div id="vis"><jsp:text/></div>
+		<div id="decorator_bottom"><jsp:text/></div>
+	</div>
 
 
 
