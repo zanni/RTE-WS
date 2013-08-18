@@ -36,7 +36,7 @@ var RteCalendar = function(spec){
 			return function(){
 				var me = this;
 				// RTE WS JSONP REQUEST FACILITY
-				var request = rte_ws.jsonp(agg, fields, function(json, start, end){
+				var request = rte_ws.json(agg, fields, function(json, start, end){
 					// compute bounds with previously intialized method
 					var bounds = computeBounds(json);
 					// refresh Buckets and Legend
