@@ -4,10 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.googlecode.jcsv.reader.CSVEntryParser;
 import com.rte.business.MixEnergy;
@@ -174,34 +170,6 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 		this.isFirstLine = isFirstLine;
 	}
 	
-	private static ApplicationContext context;
-
-	public static void main(String[] args) {
-		context = 
-		new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/applicationContext.xml",
-				"META-INF/spring/applicationContext-mongo.xml"});
-
-		RteGrabberService grabber = context.getBean(RteGrabberService.class);
-		try {
-			 Calendar start = new GregorianCalendar();
-			 start.set(2010, 0, 0	);
-			 
-			 Calendar end = new GregorianCalendar();
-			 end.set(2011, 0, 0);
-//			 end.setTime(new Date());
-		    while (start.getTime().before(end.getTime()))
-		    {
-		        grabber.retreiveAllMixenergieOfDate(start.getTime());
-		        start.add(Calendar.DATE, 1);
-		    }
-		   
-			    
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	
 
 }

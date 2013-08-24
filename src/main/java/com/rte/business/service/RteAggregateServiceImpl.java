@@ -24,9 +24,6 @@ public class RteAggregateServiceImpl implements RteAggregateService {
 	@Resource
 	private MongoTemplate template;
 
-	@Resource
-	private MixEnergyService mixEnergyRawService;
-
 	private class MixEnergyValueObject {
 		private String id;
 		private MixEnergy value;

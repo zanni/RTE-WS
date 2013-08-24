@@ -6,7 +6,7 @@
 	<artifactId>RTE-WS</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>RTE-Business</name>
+	<name>RTE-WS</name>
 	<properties>
 		<aspectj.version>1.7.0</aspectj.version>
 		<java.version>6</java.version>
