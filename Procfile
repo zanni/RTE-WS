@@ -1,1 +1,1 @@
-web: java -DMONGO_DBNAME=$MONGO_DBNAME -DMONGO_HOST=$MONGO_HOST -DMONGO_PORT=$MONGO_PORT -DMONGO_USERNAME=$MONG_USERNAME -DMONGO_PASS=$MONGO_PASS -jar rte-app/target/dependency/jetty-runner.jar --port $PORT rte-app/target/*.war
+web: java -jar rte-app/target/dependency/jetty-runner.jar --port $PORT rte-app/target/*.war
