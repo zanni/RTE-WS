@@ -64,7 +64,7 @@ public class MixEnergy {
 	private Double taux_co2;
 	
 	@DateTimeFormat(iso=ISO.DATE_TIME)
-	@Indexed
+//	@Indexed
 	private Date logDate;
 
 	public Double getAutre() {
