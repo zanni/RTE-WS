@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT target/*.war
+web: java $JAVA_OPTS -jar rte-app/target/dependency/jetty-runner.jar --port $PORT rte-app/target/*.war
