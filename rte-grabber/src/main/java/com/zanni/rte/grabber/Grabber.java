@@ -9,6 +9,8 @@ import java.util.Properties;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.zanni.rte.framework.grabber.RteGrabberService;
+
 public class Grabber {
 	public static String[] ARGS;
 	private static ClassPathXmlApplicationContext context; 

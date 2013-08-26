@@ -18,6 +18,7 @@
 		<module>rte-framework</module>
 		<module>rte-grabber</module>
 	<module>rte-app</module>
+    <module>rte-daily-grabber</module>
     </modules>
 	<repositories>
 		<repository>

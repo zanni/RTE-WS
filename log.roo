@@ -25,3 +25,30 @@ entity mongo --class ~.MixEnergy --testAutomatically true
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-24 14:09:33
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-24 16:53:53
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-24 16:56:43
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 10:31:25
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 10:36:37
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 10:40:02
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 10:45:01
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:05:04
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 21:06:37
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:06:53
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 21:07:10
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:15:14
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 21:16:24
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:19:00
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:31:46
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 21:32:26
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 21:47:35
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 21:56:05
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 22:00:38
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 22:00:47
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 22:03:32
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 22:09:01
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 22:27:27
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 22:45:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 22:51:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 22:51:32
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 22:52:30
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 23:00:58
+module create --moduleName rte-daily-grabber --topLevelPackage com.zanni.rte.grabber.daily --packaging jar --artifactId rte-daily-grabber 
+

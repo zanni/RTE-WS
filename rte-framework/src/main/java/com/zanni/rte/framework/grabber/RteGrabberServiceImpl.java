@@ -1,4 +1,4 @@
-package com.zanni.rte.grabber;
+package com.zanni.rte.framework.grabber;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
