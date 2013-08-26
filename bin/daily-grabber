@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar ../rte-daily-grabber/target/rte-daily-grabber.jar
+java -DMONGO_HOST=$MONGO_HOST -DMONGO_DBNAME=$MONGO_DBNAME -DMONGO_PORT=$MONGO_PORT -DMONGO_USERNAME=$MONGO_USERNAME -DMONGO_PASS=$MONGO_PASS -jar rte-daily-grabber/target/rte-daily-grabber.jar
