@@ -3,22 +3,15 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page" id="index_main" >
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	<spring:url value="/resources/scripts/website/index/main.js" var="main" />
+	<spring:url value="/resources/scripts/soundjs/webaudio.min.js" var="soundjs" />
+	<spring:url value="/resources/scripts/website/equalizer/main.js" var="main" />
+	<script src="${soundjs}" type="text/javascript"><!-- required for FF3 and Opera --></script>
 	<script src="${main}" type="text/javascript"><!-- required for FF3 and Opera --></script>
 	<div id="container">
-		<div id="selectors" >
-			<select id="displays" class="input-medium" style="display: none"><jsp:text/></select>
-			<select id="years" multiple="true" class="input-small" style="display: none"><jsp:text/></select>
-		</div>
-		<div id="decorator_top"><jsp:text/></div>
-		<div id="decorator_bottom"><jsp:text/></div>
-		
-		
+		<div id="decorator_top"></div>
 		<div id="vis"><jsp:text/></div>
-		
+
 	</div>
-
-
 
 
 
