@@ -18,11 +18,17 @@
   <spring:url value="/resources/scripts/rte/rte.calendar.js" var="rte_calendar" />
   <spring:url value="/resources/scripts/colorbrewer/colorbrewer.js" var="colorbrewer" />
   
-  <link rel="stylesheet" type="text/css" href="${tundra_url}" />
-  <link rel="stylesheet" type="text/css" href="${calendar_css}" />
-  <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
+<!--   <link rel="stylesheet" type="text/css" href="${tundra_url}" />
+ 
+  <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" /> -->
+  
+  
   <link rel="SHORTCUT ICON" href="${favicon}" />
 
+ <link rel="stylesheet" type="text/css" href="${calendar_css}" />
+ 
+ 
+ 
   <!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
   <c:set var="userLocale">
     <c:set var="plocale">${pageContext.response.locale}</c:set>
