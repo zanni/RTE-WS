@@ -18,8 +18,6 @@
 				id="years" class="input-small" style="margin-left:10px"><jsp:text /></select></label>
 		</form>
 		
-		
-		
 		<div id="decorator_top"><jsp:text /></div>
 		<div id="vis-container">
 			<div id="vis"><jsp:text /></div>
@@ -27,9 +25,12 @@
 		<div id="decorator_bottom"><jsp:text /></div>
 
 	</div>
-	<a href="#">
+	<a href="https://github.com/zanni/calendar">
 		<img style="position: absolute; top: 0; right: 0; border: 0;" src="images/github.png" alt="Fork me on GitHub"/>
 	<jsp:text /></a>
+	
+
+
 
 
 

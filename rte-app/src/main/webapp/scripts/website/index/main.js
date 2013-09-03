@@ -47,7 +47,7 @@
 		$.ready = function(){
 			
 			var rte_ws = new RteWS({
-				url : "http://192.168.122.199:8080/rte-app"
+				url : "http://192.168.1.101:8080/rte-app"
 			});
 
 			var possible_displays = new RteCalendar({
@@ -85,7 +85,13 @@
 				, height: 600		
 			});
 
+			var current_displayed = {};
+			current_displayed.arguments = [];
+			current_displayed.arguments[0] = selected_year;
+			current_displayed.agg = "day";
+
 			calendar.createTiles(selected_year);
+
 
 			$("#years, #displays").change(function(e){
 				var selected_display = $("#displays").attr("value");
@@ -98,12 +104,17 @@
 				calendar.colorSchemeInverse = display.colorSchemeInverse;
 				calendar.retreiveValueCallback = display.rte_closure;
 				calendar.retreiveDataClosure = display.rte_datagrab_closure;
-				calendar.retreiveDataCallback = display.rte_datagrab_closure(agg);
-				
+				calendar.retreiveDataCallback = display.rte_datagrab_closure(current_displayed.agg);
+				console.log(years)
+				current_displayed.arguments[0] = years[0];
 
-				calendar.createTiles(years);
+				calendar.createTiles.apply(calendar, current_displayed.arguments);
 
 				calendar.redrawLegend();
+			});
+
+			calendar.eventManager.on("drillthrough:changed", function(displayed){
+				current_displayed = displayed;
 			});
 	
 		}
