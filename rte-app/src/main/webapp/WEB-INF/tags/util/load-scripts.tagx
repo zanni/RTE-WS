@@ -18,6 +18,8 @@
   <spring:url value="/resources/scripts/rte/rte.calendar.js" var="rte_calendar" />
   <spring:url value="/resources/scripts/colorbrewer/colorbrewer.js" var="colorbrewer" />
   
+  
+  
 <!--   <link rel="stylesheet" type="text/css" href="${tundra_url}" />
  
   <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" /> -->
@@ -47,5 +49,12 @@
   <script src="${rte_calendar}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${colorbrewer}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
-
+	
+<!-- highlight JS -->
+	<link rel="stylesheet"
+		href="http://yandex.st/highlightjs/7.3/styles/default.min.css" />
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
 </jsp:root>

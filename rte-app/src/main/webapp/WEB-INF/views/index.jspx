@@ -5,30 +5,32 @@
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:url value="/resources/scripts/website/index/main.js" var="main" />
 	<spring:url value="/resources/images/github.png" var="github" />
-	<script src="${main}" type="text/javascript">
+	
+	<script id="code" src="${main}" type="text/javascript">
 	<!-- required for FF3 and Opera -->
 		
+	
+	
 	</script>
 	<div id="container">
 		<h1>Calendar drillthrough example</h1>
-		<form id="selectors">
-			<label style=" margin-left:10px">data:<select id="displays" class="input-medium"
-				style="display: none; margin-left:10px"><jsp:text /></select></label>
-				<label style="margin-left:10px">period:<select
-				id="years" class="input-small" style="margin-left:10px"><jsp:text /></select></label>
-		</form>
-		
 		<div id="decorator_top"><jsp:text /></div>
 		<div id="vis-container">
 			<div id="vis"><jsp:text /></div>
 		</div>
 		<div id="decorator_bottom"><jsp:text /></div>
 
+
+		<pre><jsp:text /><code class="javascript"><jsp:text /></code>
+		</pre>
+
+
+
 	</div>
-	<a href="https://github.com/zanni/calendar">
-		<img style="position: absolute; top: 0; right: 0; border: 0;" src="images/github.png" alt="Fork me on GitHub"/>
-	<jsp:text /></a>
-	
+	<a href="https://github.com/zanni/calendar"> <img
+		style="position: absolute; top: 0; right: 0; border: 0;"
+		src="images/github.png" alt="Fork me on GitHub" /> <jsp:text /></a>
+
 
 
 
