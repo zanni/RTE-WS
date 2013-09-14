@@ -1,18 +1,56 @@
 <div xmlns:spring="http://www.springframework.org/tags"
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
-	xmlns:jsp="http://java.sun.com/JSP/Page" id="index_main" >
+	xmlns:jsp="http://java.sun.com/JSP/Page" id="index_main">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	<spring:url value="/resources/scripts/soundjs/webaudio.min.js" var="soundjs" />
-	<spring:url value="/resources/scripts/website/equalizer/main.js" var="main" />
-	<script src="${soundjs}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-	<script src="${main}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+	<spring:url value="/resources/scripts/soundjs/webaudio.min.js"
+		var="soundjs" />
+	<spring:url value="/resources/scripts/website/equalizer/main.js"
+		var="main" />
+	<script src="${soundjs}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+	<script src="${main}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+	<style>
+body {
+	background: black;
+	margin: 0;
+	/*overflow	: hidden;*/
+}
+
+h1 {
+	color: white;
+}
+
+#vis {
+	background: black;
+}
+
+pre code {
+	width: 800px;
+	margin: 60px auto;
+	padding: 20px;
+	border-radius: 10px
+}
+</style>
 	<div id="container">
-		<div id="decorator_top"></div>
-		<div id="vis"><jsp:text/></div>
+		<h1>Calendar Custom Renderer/Decorator example</h1>
+		<div id="decorator_top"><jsp:text /></div>
+		<div id="vis"><jsp:text /></div>
+		<div id="decorator_bottom"><jsp:text /></div>
+
+
 
 	</div>
-
+	<pre><jsp:text /><code class="javascript"><jsp:text /></code>
+		</pre>
+	<a href="https://github.com/zanni/calendar"> <img
+		style="position: absolute; top: 0; right: 0; border: 0;"
+		src="images/github.png" alt="Fork me on GitHub" /> <jsp:text /></a>
 
 
 </div>
