@@ -1,6 +1,9 @@
 <jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
 
   <jsp:output omit-xml-declaration="yes" />
+  
+  <link rel="stylesheet"
+		href="http://yandex.st/highlightjs/7.3/styles/default.min.css" />
 
   <spring:theme code="styleSheet" var="roo_css" />
   <spring:url value="/${roo_css}" var="roo_css_url" />
@@ -51,8 +54,7 @@
   <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
 	
 <!-- highlight JS -->
-	<link rel="stylesheet"
-		href="http://yandex.st/highlightjs/7.3/styles/default.min.css" />
+	
 	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js">
 	<!-- required for FF3 and Opera -->
 		

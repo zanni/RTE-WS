@@ -14,4 +14,9 @@ public class WebsiteController {
 	public String basic(){
 		return "basic";
 	}
+	
+	@RequestMapping("/async")
+	public String async(){
+		return "async";
+	}
 }

@@ -14,6 +14,9 @@
   <definition name="basic" extends="default">
     <put-attribute name="body" value="/WEB-INF/views/basic.jspx" />
   </definition>
+  <definition name="async" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/async.jspx" />
+  </definition>
 
   <definition name="dataAccessFailure" extends="public">
     <put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx" />
