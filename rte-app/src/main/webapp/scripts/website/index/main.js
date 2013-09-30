@@ -9,8 +9,8 @@ $(document).ready(function() {
 
 		if(!start || !end)return;
 		var format = d3.time.format("%Y-%m-%d");
-		return "http://192.168.1.103:8080/rte-app/mixenergys/"+agg+"/"
-					+fields+"/between/jsonp/"
+		return "mixenergys/"+agg+"/"
+					+fields+"/between/"
 					+format(start) + "/" + format(end);
 	};
 	var cache = {};
@@ -24,7 +24,7 @@ $(document).ready(function() {
 			if(cache[url] != undefined) {  me.draw(cache[url]); return; }
 			$.ajax({
 				url : url
-				, dataType : 'jsonp'
+				, dataType : 'json'
 				, success : function(json){
 					cache[url] = json;
 					me.draw(json);

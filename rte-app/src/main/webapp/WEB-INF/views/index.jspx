@@ -20,7 +20,8 @@
 		});
 	});
 	</script>
-	<div id="container">
+	
+	<div class="container">
 		<h1>Calendar drillthrough example</h1>
 		<div id="decorator_top"><jsp:text /></div>
 			<div id="vis"><jsp:text /></div>
