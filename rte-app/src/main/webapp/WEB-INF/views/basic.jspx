@@ -5,21 +5,32 @@
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:url value="/resources/scripts/website/basic/main.js" var="main" />
 
-	<script src="${main}" type="text/javascript">
-	<!-- required for FF3 and Opera -->
+	<script  type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : "resources/scripts/website/basic/main.js",
 		
-	</script>
-	<div id="container">
-		<h1>Calendar Basic example</h1>
-		<div id="vis"><jsp:text /></div>
 
+			// url : "resources/styles/calendar.css",
+			
+			
+			success : function(data) {
+				// code highlight
+				$('code').text(data);
+				
+				$('code').each(function(i, e) {
+					hljs.highlightBlock(e);
+				});
+			}
+		});
+	});
+	</script>
+	<div class="container">
+		<h1>Calendar Basic example</h1>
+		<div id="vis"></div>
 	</div>
 	<pre><jsp:text /><code class="javascript"><jsp:text /></code>
 		</pre>
-	<a href="https://github.com/zanni/calendar"> <img
-		style="position: absolute; top: 0; right: 0; border: 0;"
-		src="images/github.png" alt="Fork me on GitHub" /> <jsp:text /></a>
-
-
-
+		
+		
 </div>

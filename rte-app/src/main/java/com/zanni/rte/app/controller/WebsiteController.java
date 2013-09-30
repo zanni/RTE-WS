@@ -15,8 +15,18 @@ public class WebsiteController {
 		return "basic";
 	}
 	
+	@RequestMapping("/sync")
+	public String sync(){
+		return "sync";
+	}
+	
 	@RequestMapping("/async")
 	public String async(){
 		return "async";
+	}
+	
+	@RequestMapping("/drill")
+	public String drill(){
+		return "drill";
 	}
 }

@@ -40,7 +40,9 @@ body {
 
   #vis {
   
-  border: solid 1px #ccc;
+/*   border: solid 1px #ccc; */
+
+
     display: block;
     background: #fff;
     width: 100%;
@@ -64,17 +66,17 @@ body {
     top: 0;
   }
 
-  pre {
+   pre {
   	
-	padding-left: 18px;
-	margin: 2em 0 2em -20px;
-
+	margin: 15px 15px;
   }
 
+
+
   pre code{
-	width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+	width: 960px;
+    margin: 0 auto;
+    padding: 15px;
     background-color:white;
     border-left: solid 2px #ccc;
-}
+} 

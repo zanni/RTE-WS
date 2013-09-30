@@ -5,19 +5,25 @@
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:url value="/resources/scripts/website/index/main.js" var="main" />
 	<spring:url value="/resources/images/github.png" var="github" />
-	
-	<script id="code" src="${main}" type="text/javascript">
+	<script  type="text/javascript">
 	<!-- required for FF3 and Opera -->
-		
-	
-	
+	$(document).ready(function() {
+		$.ajax({
+			url : "resources/scripts/website/index/main.js",
+			success : function(data) {
+				// code highlight
+				$('pre code').text(data);
+				$('pre code').each(function(i, e) {
+					hljs.highlightBlock(e);
+				});
+			}
+		});
+	});
 	</script>
 	<div id="container">
 		<h1>Calendar drillthrough example</h1>
 		<div id="decorator_top"><jsp:text /></div>
-		<div id="vis-container">
 			<div id="vis"><jsp:text /></div>
-		</div>
 		<div id="decorator_bottom"><jsp:text /></div>
 
 
@@ -27,10 +33,6 @@
 
 
 	</div>
-	<a href="https://github.com/zanni/calendar"> <img
-		style="position: absolute; top: 0; right: 0; border: 0;"
-		src="images/github.png" alt="Fork me on GitHub" /> <jsp:text /></a>
-
 
 
 

@@ -21,7 +21,8 @@
   <spring:url value="/resources/scripts/rte/rte.calendar.js" var="rte_calendar" />
   <spring:url value="/resources/scripts/colorbrewer/colorbrewer.js" var="colorbrewer" />
   
-  
+  <spring:url value="/resources/scripts/bootstrap/dist/css/bootstrap.css" var="bootstrap_css" />
+  <spring:url value="/resources/scripts/bootstrap/dist/js/bootstrap.min.js" var="bootstrap" />
   
 <!--   <link rel="stylesheet" type="text/css" href="${tundra_url}" />
  
@@ -29,29 +30,21 @@
   
   
   <link rel="SHORTCUT ICON" href="${favicon}" />
-
+ <link rel="stylesheet" type="text/css" href="${bootstrap_css}" />
  <link rel="stylesheet" type="text/css" href="${calendar_css}" />
  
  
  
-  <!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
-  <c:set var="userLocale">
-    <c:set var="plocale">${pageContext.response.locale}</c:set>
-    <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
-  </c:set>
 
-  <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
 
-  <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-  <script src="${spring_url}" type="text/javascript"><!-- /required for FF3 and Opera --></script>
-  <script src="${spring_dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+
+ 
   <script src="${jquery}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${d3}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${calendar}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-  <script src="${rte_ws}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-  <script src="${rte_calendar}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${colorbrewer}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-  <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
+  <script src="${bootstrap}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    
 	
 <!-- highlight JS -->
 	

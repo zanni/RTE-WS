@@ -17,6 +17,12 @@
   <definition name="async" extends="default">
     <put-attribute name="body" value="/WEB-INF/views/async.jspx" />
   </definition>
+   <definition name="sync" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/sync.jspx" />
+  </definition>
+   <definition name="drill" extends="default">
+    <put-attribute name="body" value="/WEB-INF/views/drill.jspx" />
+  </definition>
 
   <definition name="dataAccessFailure" extends="public">
     <put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jspx" />

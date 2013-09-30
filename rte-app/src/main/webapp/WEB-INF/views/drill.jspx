@@ -1,0 +1,31 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:jsp="http://java.sun.com/JSP/Page" id="index_main">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:url value="/resources/scripts/website/async/main.js" var="main" />
+
+	<script  type="text/javascript">
+	<!-- required for FF3 and Opera -->
+	$(document).ready(function() {
+		$.ajax({
+			url : "resources/scripts/website/drill/main.js",
+			success : function(data) {
+				// code highlight
+				$('pre code').text(data);
+				$('pre code').each(function(i, e) {
+					hljs.highlightBlock(e);
+				});
+			}
+		});
+	});
+	</script>
+	<div class="container">
+		<h1>Calendar Async example</h1>
+		<div id="decorator_top"><jsp:text /></div>
+		<div id="vis"><jsp:text /></div>
+	</div>
+	<pre><jsp:text /><code class="javascript"><jsp:text /></code>
+		</pre>
+
+</div>
