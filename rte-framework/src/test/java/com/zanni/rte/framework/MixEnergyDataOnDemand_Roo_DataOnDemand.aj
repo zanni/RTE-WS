@@ -33,7 +33,6 @@ privileged aspect MixEnergyDataOnDemand_Roo_DataOnDemand {
     
     public MixEnergy MixEnergyDataOnDemand.getNewTransientMixEnergy(int index) {
         MixEnergy obj = new MixEnergy();
-        setAutre(obj, index);
         setCharbon(obj, index);
         setConsommation(obj, index);
         setEch_comm_allemagne(obj, index);
@@ -43,10 +42,25 @@ privileged aspect MixEnergyDataOnDemand_Roo_DataOnDemand {
         setEch_comm_italie(obj, index);
         setEch_comm_suisse(obj, index);
         setEch_physiques(obj, index);
+        setEnr_thermique(obj, index);
+        setEnr_thermique_biogaz(obj, index);
+        setEnr_thermique_biomasse(obj, index);
+        setEnr_thermique_dechet(obj, index);
         setEolien(obj, index);
         setFioul(obj, index);
+        setFioul_autre(obj, index);
+        setFioul_cogen(obj, index);
+        setFioul_tac(obj, index);
         setGaz(obj, index);
-        setHydrolique(obj, index);
+        setGaz_autre(obj, index);
+        setGaz_ccg(obj, index);
+        setGaz_cogen(obj, index);
+        setGaz_tac(obj, index);
+        setHydraulique(obj, index);
+        setHydraulique_eau(obj, index);
+        setHydraulique_lac(obj, index);
+        setHydraulique_step(obj, index);
+        setInit(obj, index);
         setLogDate(obj, index);
         setNucleaire(obj, index);
         setPompage(obj, index);
@@ -57,74 +71,144 @@ privileged aspect MixEnergyDataOnDemand_Roo_DataOnDemand {
         return obj;
     }
     
-    public void MixEnergyDataOnDemand.setAutre(MixEnergy obj, int index) {
-        Double autre = new Integer(index).doubleValue();
-        obj.setAutre(autre);
-    }
-    
     public void MixEnergyDataOnDemand.setCharbon(MixEnergy obj, int index) {
-        Double charbon = new Integer(index).doubleValue();
+        Integer charbon = new Integer(index);
         obj.setCharbon(charbon);
     }
     
     public void MixEnergyDataOnDemand.setConsommation(MixEnergy obj, int index) {
-        Double consommation = new Integer(index).doubleValue();
+        Integer consommation = new Integer(index);
         obj.setConsommation(consommation);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_allemagne(MixEnergy obj, int index) {
-        Double ech_comm_allemagne = new Integer(index).doubleValue();
+        Integer ech_comm_allemagne = new Integer(index);
         obj.setEch_comm_allemagne(ech_comm_allemagne);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_angleterre(MixEnergy obj, int index) {
-        Double ech_comm_angleterre = new Integer(index).doubleValue();
+        Integer ech_comm_angleterre = new Integer(index);
         obj.setEch_comm_angleterre(ech_comm_angleterre);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_belgique(MixEnergy obj, int index) {
-        Double ech_comm_belgique = new Integer(index).doubleValue();
+        Integer ech_comm_belgique = new Integer(index);
         obj.setEch_comm_belgique(ech_comm_belgique);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_espagne(MixEnergy obj, int index) {
-        Double ech_comm_espagne = new Integer(index).doubleValue();
+        Integer ech_comm_espagne = new Integer(index);
         obj.setEch_comm_espagne(ech_comm_espagne);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_italie(MixEnergy obj, int index) {
-        Double ech_comm_italie = new Integer(index).doubleValue();
+        Integer ech_comm_italie = new Integer(index);
         obj.setEch_comm_italie(ech_comm_italie);
     }
     
     public void MixEnergyDataOnDemand.setEch_comm_suisse(MixEnergy obj, int index) {
-        Double ech_comm_suisse = new Integer(index).doubleValue();
+        Integer ech_comm_suisse = new Integer(index);
         obj.setEch_comm_suisse(ech_comm_suisse);
     }
     
     public void MixEnergyDataOnDemand.setEch_physiques(MixEnergy obj, int index) {
-        Double ech_physiques = new Integer(index).doubleValue();
+        Integer ech_physiques = new Integer(index);
         obj.setEch_physiques(ech_physiques);
     }
     
+    public void MixEnergyDataOnDemand.setEnr_thermique(MixEnergy obj, int index) {
+        Integer enr_thermique = new Integer(index);
+        obj.setEnr_thermique(enr_thermique);
+    }
+    
+    public void MixEnergyDataOnDemand.setEnr_thermique_biogaz(MixEnergy obj, int index) {
+        Integer enr_thermique_biogaz = new Integer(index);
+        obj.setEnr_thermique_biogaz(enr_thermique_biogaz);
+    }
+    
+    public void MixEnergyDataOnDemand.setEnr_thermique_biomasse(MixEnergy obj, int index) {
+        Integer enr_thermique_biomasse = new Integer(index);
+        obj.setEnr_thermique_biomasse(enr_thermique_biomasse);
+    }
+    
+    public void MixEnergyDataOnDemand.setEnr_thermique_dechet(MixEnergy obj, int index) {
+        Integer enr_thermique_dechet = new Integer(index);
+        obj.setEnr_thermique_dechet(enr_thermique_dechet);
+    }
+    
     public void MixEnergyDataOnDemand.setEolien(MixEnergy obj, int index) {
-        Double eolien = new Integer(index).doubleValue();
+        Integer eolien = new Integer(index);
         obj.setEolien(eolien);
     }
     
     public void MixEnergyDataOnDemand.setFioul(MixEnergy obj, int index) {
-        Double fioul = new Integer(index).doubleValue();
+        Integer fioul = new Integer(index);
         obj.setFioul(fioul);
     }
     
+    public void MixEnergyDataOnDemand.setFioul_autre(MixEnergy obj, int index) {
+        Integer fioul_autre = new Integer(index);
+        obj.setFioul_autre(fioul_autre);
+    }
+    
+    public void MixEnergyDataOnDemand.setFioul_cogen(MixEnergy obj, int index) {
+        Integer fioul_cogen = new Integer(index);
+        obj.setFioul_cogen(fioul_cogen);
+    }
+    
+    public void MixEnergyDataOnDemand.setFioul_tac(MixEnergy obj, int index) {
+        Integer fioul_tac = new Integer(index);
+        obj.setFioul_tac(fioul_tac);
+    }
+    
     public void MixEnergyDataOnDemand.setGaz(MixEnergy obj, int index) {
-        Double gaz = new Integer(index).doubleValue();
+        Integer gaz = new Integer(index);
         obj.setGaz(gaz);
     }
     
-    public void MixEnergyDataOnDemand.setHydrolique(MixEnergy obj, int index) {
-        Double hydrolique = new Integer(index).doubleValue();
-        obj.setHydrolique(hydrolique);
+    public void MixEnergyDataOnDemand.setGaz_autre(MixEnergy obj, int index) {
+        Integer gaz_autre = new Integer(index);
+        obj.setGaz_autre(gaz_autre);
+    }
+    
+    public void MixEnergyDataOnDemand.setGaz_ccg(MixEnergy obj, int index) {
+        Integer gaz_ccg = new Integer(index);
+        obj.setGaz_ccg(gaz_ccg);
+    }
+    
+    public void MixEnergyDataOnDemand.setGaz_cogen(MixEnergy obj, int index) {
+        Integer gaz_cogen = new Integer(index);
+        obj.setGaz_cogen(gaz_cogen);
+    }
+    
+    public void MixEnergyDataOnDemand.setGaz_tac(MixEnergy obj, int index) {
+        Integer gaz_tac = new Integer(index);
+        obj.setGaz_tac(gaz_tac);
+    }
+    
+    public void MixEnergyDataOnDemand.setHydraulique(MixEnergy obj, int index) {
+        Integer hydraulique = new Integer(index);
+        obj.setHydraulique(hydraulique);
+    }
+    
+    public void MixEnergyDataOnDemand.setHydraulique_eau(MixEnergy obj, int index) {
+        Integer hydraulique_eau = new Integer(index);
+        obj.setHydraulique_eau(hydraulique_eau);
+    }
+    
+    public void MixEnergyDataOnDemand.setHydraulique_lac(MixEnergy obj, int index) {
+        Integer hydraulique_lac = new Integer(index);
+        obj.setHydraulique_lac(hydraulique_lac);
+    }
+    
+    public void MixEnergyDataOnDemand.setHydraulique_step(MixEnergy obj, int index) {
+        Integer hydraulique_step = new Integer(index);
+        obj.setHydraulique_step(hydraulique_step);
+    }
+    
+    public void MixEnergyDataOnDemand.setInit(MixEnergy obj, int index) {
+        Boolean init = false;
+        obj.setInit(init);
     }
     
     public void MixEnergyDataOnDemand.setLogDate(MixEnergy obj, int index) {
@@ -133,32 +217,32 @@ privileged aspect MixEnergyDataOnDemand_Roo_DataOnDemand {
     }
     
     public void MixEnergyDataOnDemand.setNucleaire(MixEnergy obj, int index) {
-        Double nucleaire = new Integer(index).doubleValue();
+        Integer nucleaire = new Integer(index);
         obj.setNucleaire(nucleaire);
     }
     
     public void MixEnergyDataOnDemand.setPompage(MixEnergy obj, int index) {
-        Double pompage = new Integer(index).doubleValue();
+        Integer pompage = new Integer(index);
         obj.setPompage(pompage);
     }
     
     public void MixEnergyDataOnDemand.setPrevisionj(MixEnergy obj, int index) {
-        Double previsionj = new Integer(index).doubleValue();
+        Integer previsionj = new Integer(index);
         obj.setPrevisionj(previsionj);
     }
     
     public void MixEnergyDataOnDemand.setPrevisionj1(MixEnergy obj, int index) {
-        Double previsionj1 = new Integer(index).doubleValue();
+        Integer previsionj1 = new Integer(index);
         obj.setPrevisionj1(previsionj1);
     }
     
     public void MixEnergyDataOnDemand.setSolaire(MixEnergy obj, int index) {
-        Double solaire = new Integer(index).doubleValue();
+        Integer solaire = new Integer(index);
         obj.setSolaire(solaire);
     }
     
     public void MixEnergyDataOnDemand.setTaux_co2(MixEnergy obj, int index) {
-        Double taux_co2 = new Integer(index).doubleValue();
+        Integer taux_co2 = new Integer(index);
         obj.setTaux_co2(taux_co2);
     }
     

@@ -44,7 +44,7 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 
 	@Override
 	public void retreiveAllMixenergieOfDate(Date date) {
-		_logger.info("Start importing RTE Data of " + date);
+//		_logger.info("Start importing RTE Data of " + date);
 
 		// need to add today date with correct format to service url to retreive
 		// today's archive
@@ -54,6 +54,8 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 		String arg = format.format(date);
 		String url = _rteConfigurationBean.getServiceUrl() + arg;
 
+		int updated = 0;
+		int created = 0;
 		try {
 			// download archive from RTE website
 			URL website = new URL(url);
@@ -76,6 +78,9 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 				while (it.hasNext()) {
 					MixEnergy record = it.next();
 
+					if (!record.getInit())
+						continue;
+					
 					// test if record is empty or not
 					if (record.getLogDate() != null) {
 
@@ -84,18 +89,23 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 						if (existing == null) {
 							// create imported record
 							_mixEnergyService.saveMixEnergy(record);
+							created++;
 						} else {
 							// merge imported record with previous saved one
 							// existing.merge(record);
 							_mixEnergyService.updateMixEnergy(record);
+							updated++;
 						}
 					}
 				}
 				zis.closeEntry();
 
 				zipEntry = zis.getNextEntry();
+				
+				int total = created + updated;
+				_logger.info("SUCCESS - FRANCE - "+date + "cr:"+created+" , up:"+updated+" , to:"+total);
 			}
-			_logger.info("RTE Data were successfully grabbed");
+			
 
 		} catch (IOException e) {
 			_logger.error("RTE Data could not be grabbed");

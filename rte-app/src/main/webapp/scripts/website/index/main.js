@@ -48,5 +48,5 @@ $(document).ready(function() {
 		.grab(datagrab_closure)
 		.renderer(new Calendar.renderer.drillthrough());
 
-	myCalendar.createTiles(2011, "day");
+	myCalendar.createTiles(2013, "day");
 });

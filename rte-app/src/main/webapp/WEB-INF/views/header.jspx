@@ -34,16 +34,22 @@
 							<li><a href="#">Async drillthrough</a></li>
 						</ul></li>
 				</ul>
-				
+
 			</div>
+			
+			
 		</div>
+		
 		<!-- /.navbar-collapse -->
-		<a href="https://github.com/zanni/calendar"> <img
-		style="position: absolute; top: 50px; right: 0; border: 0;"
-		src="images/github.png" alt="Fork me on GitHub" /> <jsp:text /></a>
+		<a href="https://github.com/zanni/calendar"><img
+			style="position: absolute; top: 50px; right: 0; border: 0; width: 149px; height: 149px;"
+			src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-grey@2x.png"
+			alt="Fork me on GitHub"/><jsp:text /></a>
+			
+			
 	</nav>
 
-	
+
 
 
 </div>

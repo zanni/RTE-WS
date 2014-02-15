@@ -19,16 +19,24 @@ $(document).ready(function() {
 		myCalendar.data(raw).createTiles(2011);
 		
 		setTimeout(function(){ 
-			myCalendar.renderer("month").color(colorbrewer["YlGnBu"][6]).createTiles(2011, [4,5,6]); 
+			myCalendar.renderer("month")
+					.color(colorbrewer["YlGnBu"][6])
+					.createTiles(2011, [4,5,6]); 
 		},2000);
 		setTimeout(function(){ 
-			myCalendar.renderer("week").color(colorbrewer["PuBuGn"][7]).createTiles(2011, 23); }
+			myCalendar.renderer("week")
+					.color(colorbrewer["PuBuGn"][7])
+					.createTiles(2011, 23); }
 		,4000);
 		setTimeout(function(){ 
-			myCalendar.renderer("week").color(colorbrewer["Oranges"][8]).createTiles(2011, 22); }
+			myCalendar.renderer("week")
+					.color(colorbrewer["Oranges"][8])
+					.createTiles(2011, 22); }
 		,6000);
 		setTimeout(function(){ 
-			myCalendar.renderer("day").color(colorbrewer["Greens"][9]).createTiles(2011, 23, 0); }
+			myCalendar.renderer("day")
+					.color(colorbrewer["Greens"][9])
+					.createTiles(2011, 23, 0); }
 		,8000);
 	});
 });

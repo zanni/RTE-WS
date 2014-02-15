@@ -14,6 +14,8 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
+import com.zanni.rte.framework.utils.RegionEnum;
+
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 import flexjson.transformer.AbstractTransformer;
@@ -22,81 +24,34 @@ import flexjson.transformer.AbstractTransformer;
 @RooToString
 @RooMongoEntity
 @RooJson
-public class MixEnergy {
-	
+public class MixEnergyRegional {
+
 	@Transient
 	private Boolean init = false;
 	
-	@DateTimeFormat(iso=ISO.DATE_TIME)
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	@Indexed
 	private Date logDate;
-	
-	private Integer consommation;
-	
-	private Integer previsionj1;
 
-	private Integer previsionj;
-	
-	private Integer fioul;
-	
-	private Integer charbon;
-	
-	private Integer gaz;
-	
+	private RegionEnum region;
+
+	private Integer consommation;
+
+	private Integer thermique;
+
 	private Integer nucleaire;
-	
+
 	private Integer eolien;
-	
+
 	private Integer solaire;
-	
+
 	private Integer hydraulique;
 
 	private Integer pompage;
-	
+
 	private Integer enr_thermique;
-	
+
 	private Integer ech_physiques;
-	
-	private Integer taux_co2;
-	
-	private Integer ech_comm_allemagne;
-
-	private Integer ech_comm_angleterre;
-
-	private Integer ech_comm_belgique;
-
-	private Integer ech_comm_espagne;
-
-	private Integer ech_comm_italie;
-
-	private Integer ech_comm_suisse;
-	
-	private Integer fioul_tac;
-	
-	private Integer fioul_cogen;
-		
-	private Integer fioul_autre;
-	
-	private Integer gaz_tac;
-	
-	private Integer gaz_cogen;
-	
-	private Integer gaz_ccg;
-	
-	private Integer gaz_autre;
-	
-	private Integer hydraulique_eau;
-	
-	private Integer hydraulique_lac;
-	
-	private Integer hydraulique_step;
-	
-	private Integer enr_thermique_dechet;
-	
-	private Integer enr_thermique_biomasse;
-	
-	private Integer enr_thermique_biogaz;
-	
 
 	private static class ExcludeTransformer extends AbstractTransformer {
 		@Override
@@ -111,28 +66,28 @@ public class MixEnergy {
 		}
 	}
 
-	
-	
 	public String toJson() {
 		return new JSONSerializer()
 				.transform(new ExcludeTransformer(), void.class)
 				.exclude("*.class").exclude("id").exclude("init").serialize(this);
 	}
 
-	public static MixEnergy fromJsonToMixEnergy(String json) {
-		return new JSONDeserializer<MixEnergy>().use(null, MixEnergy.class)
-				.deserialize(json);
+	public static MixEnergyRegional fromJsonToMixEnergyRegional(String json) {
+		return new JSONDeserializer<MixEnergyRegional>().use(null,
+				MixEnergyRegional.class).deserialize(json);
 	}
 
-	public static String toJsonArray(Collection<MixEnergy> collection) {
+	public static String toJsonArray(Collection<MixEnergyRegional> collection) {
 		return new JSONSerializer()
 				.transform(new ExcludeTransformer(), void.class)
 				.exclude("*.class").exclude("id").exclude("init").serialize(collection);
 	}
 
-	public static Collection<MixEnergy> fromJsonArrayToMixEnergys(String json) {
-		return new JSONDeserializer<List<MixEnergy>>()
-				.use(null, ArrayList.class).use("values", MixEnergy.class)
-				.deserialize(json);
+	public static Collection<MixEnergyRegional> fromJsonArrayToMixEnergyRegionals(
+			String json) {
+		return new JSONDeserializer<List<MixEnergyRegional>>()
+				.use(null, ArrayList.class)
+				.use("values", MixEnergyRegional.class).deserialize(json);
 	}
+
 }

@@ -1,11 +1,5 @@
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-24 09:47:24
 repository mongo --interface ~.repository.MixEnergyRepository  --entity ~.business.MixEnergy
-
 service  --interface ~.service.MixEnergyService  --entity ~.business.MixEnergy
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-24 09:54:49
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-24 11:22:47
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-24 12:07:35
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-24 13:01:06
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 22:00:14
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-26 22:03:37
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-26 23:05:55
+repository mongo --interface ~.repository.MixEnergyRegionalRepository  --entity ~.business.MixEnergyRegional
+service  --interface ~.service.MixEnergyRegionalService  --entity ~.business.MixEnergyRegional

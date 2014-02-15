@@ -7,6 +7,7 @@ import java.util.Date;
 
 import com.googlecode.jcsv.reader.CSVEntryParser;
 import com.zanni.rte.framework.MixEnergy;
+import com.zanni.rte.framework.MixEnergyRegional;
 
 /**
  * 
@@ -33,14 +34,15 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 	 * feild intended to share file's date through different records
 	 */
 	private Date _fileDate;
+	
 	/**
 	 * Secured String->Double convvertion method
 	 * @param value
 	 * @return
 	 */
-	private Double convertDouble(String value){
+	private Integer convert(String value){
 		try{
-			return Double.valueOf(value);
+			return Integer.valueOf(value);
 		}
 		catch(NumberFormatException e){
 			return null;
@@ -53,10 +55,10 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 	 * @param index
 	 * @return
 	 */
-	private Double getArrayEntry(String[] array, int index){
+	private Integer getArrayEntry(String[] array, int index){
 		try{
 			if(array.length > index){
-				return convertDouble(array[index]);
+				return convert(array[index]);
 			}
 		}
 		catch(Exception e){
@@ -68,7 +70,7 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 	@Override
 	public MixEnergy parseEntry(String... data) {
 		SimpleDateFormat format = new SimpleDateFormat(MixenergieCsvParser.FILE_DATE_FORMAT);
-		 String[] arg0 = data[0].split("\t");
+		 String[] arg0 = data[0].split("\\t");
 		 //the first line contain the date (year month day) of the file
 		 if(isFirstLine()){
 			 String line = arg0[0];
@@ -81,17 +83,15 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 				return null;
 			}
 		 }
-		
-		//we check if there is more than 15 args because 
-		//either record date is a full hour record (00:00, 01:00 ...) and we have access
-		//to energy exchange between countries
-		//either record date is not a full hour (00:15, 00:30) and we don't
-		//so a "good" record is either 15 or 21 args  
-		if(arg0.length < 15){
-			//we must return an empty record while returning null seem to break parser
-			return new MixEnergy();
-		}
 			
+		 boolean has_data = false;
+			for(String str : arg0){
+				Integer convert = convert(str);
+				if(convert != null) has_data=true;
+			}
+			if(!has_data){
+				return new MixEnergy();
+			}
 		
 		format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		MixEnergy record = new MixEnergy();
@@ -114,35 +114,48 @@ public class MixenergieCsvParser implements CSVEntryParser<MixEnergy> {
 		
 		try {
 			record.setLogDate(format.parse(record_log_date));
-		
-			record.setConsommation(getArrayEntry(arg0, 1));
-			record.setPrevisionj1(getArrayEntry(arg0, 2));
-			record.setPrevisionj(getArrayEntry(arg0, 3));
-			record.setFioul(getArrayEntry(arg0, 4));
-			record.setCharbon(getArrayEntry(arg0, 5));
-			record.setGaz(getArrayEntry(arg0, 6));
-			record.setNucleaire(getArrayEntry(arg0, 7));
-			record.setEolien(getArrayEntry(arg0, 8));
-			record.setSolaire(getArrayEntry(arg0, 9));
-			record.setHydrolique(getArrayEntry(arg0, 10));
-			record.setPompage(getArrayEntry(arg0, 11));
-			record.setAutre(getArrayEntry(arg0, 12));
-			record.setEch_physiques(getArrayEntry(arg0, 13));
-			record.setTaux_co2(getArrayEntry(arg0, 14));
-			record.setEch_comm_allemagne(getArrayEntry(arg0, 15));
-			record.setEch_comm_angleterre(getArrayEntry(arg0, 16));
-			record.setEch_comm_belgique(getArrayEntry(arg0, 17));
-			record.setEch_comm_espagne(getArrayEntry(arg0, 18));
-			record.setEch_comm_italie(getArrayEntry(arg0, 19));
-			record.setEch_comm_suisse(getArrayEntry(arg0, 20));
+			int i = 1;
+			
+			record.setConsommation(getArrayEntry(arg0, i++));
+			record.setPrevisionj1(getArrayEntry(arg0, i++));
+			record.setPrevisionj(getArrayEntry(arg0, i++));
+			record.setFioul(getArrayEntry(arg0, i++));
+			record.setCharbon(getArrayEntry(arg0, i++));
+			record.setGaz(getArrayEntry(arg0, i++));
+			record.setNucleaire(getArrayEntry(arg0, i++));
+			record.setEolien(getArrayEntry(arg0, i++));
+			record.setSolaire(getArrayEntry(arg0, i++));
+			record.setHydraulique(getArrayEntry(arg0, i++));
+			record.setPompage(getArrayEntry(arg0, i++));
+			record.setEnr_thermique(getArrayEntry(arg0, i++));
+			record.setEch_physiques(getArrayEntry(arg0, i++));
+			record.setTaux_co2(getArrayEntry(arg0, i++));
+			record.setEch_comm_allemagne(getArrayEntry(arg0, i++));
+			record.setEch_comm_angleterre(getArrayEntry(arg0, i++));
+			record.setEch_comm_belgique(getArrayEntry(arg0, i++));
+			record.setEch_comm_espagne(getArrayEntry(arg0, i++));
+			record.setEch_comm_italie(getArrayEntry(arg0, i++));
+			record.setEch_comm_suisse(getArrayEntry(arg0, i++));
+			record.setFioul_tac(getArrayEntry(arg0, i++));
+			record.setFioul_cogen(getArrayEntry(arg0, i++));
+			record.setFioul_autre(getArrayEntry(arg0, i++));
+			record.setGaz_tac(getArrayEntry(arg0, i++));
+			record.setGaz_cogen(getArrayEntry(arg0, i++));
+			record.setGaz_ccg(getArrayEntry(arg0, i++));
+			record.setGaz_autre(getArrayEntry(arg0, i++));
+			record.setHydraulique_eau(getArrayEntry(arg0, i++));
+			record.setHydraulique_lac(getArrayEntry(arg0, i++));
+			record.setHydraulique_step(getArrayEntry(arg0, i++));
+			record.setEnr_thermique_dechet(getArrayEntry(arg0, i++));
+			record.setEnr_thermique_biomasse(getArrayEntry(arg0, i++));
+			record.setEnr_thermique_biogaz(getArrayEntry(arg0, i++));
+			record.setInit(true);
 			return record;
+		
 		} catch (Exception e) {
 			//we must return an empty record while returning null seem to break parser
 			return record;
 		}
-		
-		
-		
 		
 	}
 	/**
