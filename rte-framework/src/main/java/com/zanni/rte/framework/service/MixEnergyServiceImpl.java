@@ -1,6 +1,7 @@
 package com.zanni.rte.framework.service;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -29,5 +30,23 @@ public class MixEnergyServiceImpl implements MixEnergyService {
 				"yyyy-MM-dd'T'HH:mm:ss'Z'");
 		return repository.findCO2ByLogDateBetween(format.format(startDate),
 				format.format(endDate));
+	}
+	
+	@Override
+	public MixEnergy getCurrent(){
+		Date date = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		
+		int unroundedMinutes = calendar.get(Calendar.MINUTE);
+		int mod = unroundedMinutes % 15;
+		calendar.add(Calendar.MINUTE, mod < 8 ? -mod : (15 - mod));
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		
+		calendar.add(Calendar.MINUTE, -30);
+		
+		
+		return this.findByLogDate(calendar.getTime());
 	}
 }
