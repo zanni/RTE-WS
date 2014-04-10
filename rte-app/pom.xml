@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.zanni.rte</groupId>
 		<artifactId>rte-ws</artifactId>
-		<version>1.0</version>
+		<version>1.1</version>
 	</parent>
 	<name>rte-app</name>
 	<properties>
@@ -217,7 +217,7 @@
 		<dependency>
 			<groupId>com.zanni.rte.framework</groupId>
 			<artifactId>rte-framework</artifactId>
-			<version>1.0</version>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.newrelic.agent.java</groupId>
@@ -443,9 +443,7 @@
 										<artifactId>
 											maven-dependency-plugin
 										</artifactId>
-										<versionRange>
-											[2.6,)
-										</versionRange>
+										<versionRange>[2.3,)</versionRange>
 										<goals>
 											<goal>
 												copy-dependencies
