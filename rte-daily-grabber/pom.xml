@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.zanni.rte</groupId>
 		<artifactId>rte-ws</artifactId>
-		<version>1.0</version>
+		<version>1.1</version>
 	</parent>
 	<name>rte-daily-grabber</name>
 	<properties>
@@ -149,7 +149,7 @@
 		<dependency>
 			<groupId>com.zanni.rte.framework</groupId>
 			<artifactId>rte-framework</artifactId>
-			<version>1.0</version>
+			<version>1.1</version>
 		</dependency>
     </dependencies>
 	<build>
