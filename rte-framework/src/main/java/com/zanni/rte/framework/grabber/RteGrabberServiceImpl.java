@@ -1,11 +1,13 @@
 package com.zanni.rte.framework.grabber;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -44,7 +46,7 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 
 	@Override
 	public void retreiveAllMixenergieOfDate(Date date) {
-//		_logger.info("Start importing RTE Data of " + date);
+		// _logger.info("Start importing RTE Data of " + date);
 
 		// need to add today date with correct format to service url to retreive
 		// today's archive
@@ -60,7 +62,11 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 			// download archive from RTE website
 			URL website = new URL(url);
 
-			ZipInputStream zis = new ZipInputStream(website.openStream());
+//			ZipInputStream zis = new ZipInputStream(website.openStream());
+
+			ZipInputStream zis = new ZipInputStream(new BufferedInputStream(
+					website.openStream()));
+
 			ZipEntry zipEntry = null;
 			zipEntry = zis.getNextEntry();
 			ByteArrayOutputStream streamBuilder = new ByteArrayOutputStream();
@@ -80,7 +86,7 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 
 					if (!record.getInit())
 						continue;
-					
+
 					// test if record is empty or not
 					if (record.getLogDate() != null) {
 
@@ -101,11 +107,11 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 				zis.closeEntry();
 
 				zipEntry = zis.getNextEntry();
-				
+
 				int total = created + updated;
-				_logger.info("SUCCESS - FRANCE - "+date + "cr:"+created+" , up:"+updated+" , to:"+total);
+				_logger.info("SUCCESS - FRANCE - " + date + "cr:" + created
+						+ " , up:" + updated + " , to:" + total);
 			}
-			
 
 		} catch (IOException e) {
 			_logger.error("RTE Data could not be grabbed");
