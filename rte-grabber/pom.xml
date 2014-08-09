@@ -5,8 +5,12 @@
 	<groupId>com.zanni.rte.grabber</groupId>
 	<artifactId>rte-grabber</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>rte-grabber</name>
+	<parent>
+		<groupId>com.zanni.rte</groupId>
+		<artifactId>rte-ws</artifactId>
+		<version>1.1</version>
+	</parent>
 	<properties>
 		<aspectj.version>1.7.0</aspectj.version>
 		<java.version>1.6</java.version>
@@ -114,7 +118,7 @@
 		<dependency>
 			<groupId>com.zanni.rte.framework</groupId>
 			<artifactId>rte-framework</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>

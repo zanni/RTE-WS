@@ -9,6 +9,7 @@ import com.zanni.rte.framework.MixEnergy;
 
 @RooService(domainTypes = { MixEnergy.class })
 public interface MixEnergyService {
+	public MixEnergy getCurrent();
 	public MixEnergy findByLogDate(Date logDate);
 	public List<MixEnergy> findByLogDateBetween(Date startDate, Date endDate);
 	public List<MixEnergy> findCO2ByLogDateBetween(Date startDate, Date endDate);

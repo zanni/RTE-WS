@@ -99,7 +99,8 @@ public class RteGrabberServiceImpl implements RteGrabberService {
 						} else {
 							// merge imported record with previous saved one
 							// existing.merge(record);
-							_mixEnergyService.updateMixEnergy(record);
+							_mixEnergyService.deleteMixEnergy(existing);
+							_mixEnergyService.saveMixEnergy(record);
 							updated++;
 						}
 					}
